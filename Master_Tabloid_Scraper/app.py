@@ -22,8 +22,7 @@ class HelloWorld(object):
             print("User yelp search POST body: %s" %
                   (cherrypy.request.body.read()))
             url_safe_search_term = search_term.replace(' ', '+')
-            scraped_data = tabloid_search.tabloid_search(search_term,
-                                             num_days_ago)
+            scraped_data = tabloid_search(url_safe_search_term, num_days_ago)
             cherrypy.response.headers['Content-Type'] = 'text/plain'
             cherrypy.response.headers[
                 'Content-Disposition'] = "attachment; filename='scraped_data.txt'"
@@ -31,6 +30,7 @@ class HelloWorld(object):
             return scraped_data
         except Exception as e:
             print("EXCEPTION RAISED WHILE PROCESSING")
+            print(e)
             tmpl = env.get_template('error.html')
             error_msg = "Sorry, but something went wrong trying to scrape this request. It's possible that there were no search results for your query, but it's also possible that Dr. Robotnik spilled hydrocholoric acid on the WebProcessor2000 again. We'll look into it!"
             return tmpl.render(error_msg=error_msg)
