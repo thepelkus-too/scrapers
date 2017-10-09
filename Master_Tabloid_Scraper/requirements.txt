@@ -1,0 +1,4 @@
+cherrypy==3.8.0
+Jinja2==2.7.3
+bs4==0.0.1
+requests==2.18.4
