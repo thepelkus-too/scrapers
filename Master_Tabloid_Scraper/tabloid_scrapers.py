@@ -776,15 +776,23 @@ def tabloid_search(search_term_string, num_days_ago):
     num_days_ago = int(num_days_ago)
     print("STARTING SEARCH WITH: %s, %d" % (search_term_string, num_days_ago))
     all_text = []
+    yield '.'
     all_text += EScraper(search_term_string, num_days_ago)
+    yield '.'
     all_text += RadarScraper(search_term_string, num_days_ago)
+    yield '.'
     all_text += PerezScraper(search_term_string, num_days_ago)
+    yield '.'
     all_text += PeopleScraper(search_term_string, num_days_ago)
+    yield '.'
     all_text += CelebuzzScraper(search_term_string, num_days_ago)
+    yield '.'
     all_text += NatlEnquirerScraper(search_term_string, num_days_ago)
+    yield '.'
     all_text += TMZScraper(search_term_string, num_days_ago)
+    yield '.'
     all_text += OKScraper(search_term_string, num_days_ago)
-    return ''.join(all_text)
+    yield ''.join(all_text)
 
 
 def command_line_write():
