@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block body %}
+  Fetch Tabloid Data:
+  <form action="/scrape" method="POST">
+
+
+    <div style="margin-top: 2em">
+      Search reviews matching the search term:<br />
+      <input type="text" name="search_term" />
+    </div>
+
+    <div style="margin-top: 2em">
+      Scrape the following number of days ago:<br />
+      <input type="text" name="num_days_ago" />
+    </div>
+
+    <div style="margin-top: 2em">
+      <input type="submit" />
+    </div>
+  </form>
+{% endblock %}
